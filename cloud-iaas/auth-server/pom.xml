@@ -13,6 +13,7 @@
     <name>auth-server</name>
     <url>http://maven.apache.org</url>
 
+    <!--【统一管理依赖版本】-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
