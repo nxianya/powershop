@@ -25,6 +25,26 @@ public interface AuthConstant {
     // 【退出地址】
     String LOGOUT_URL="/doLogout";
 
-    // 【Token过期时间】 todo 添加随机时间预防缓存雪崩
+    // 【Token过期时间
     Long TOKEN_EXPIRE_TIME = 7200L;
+
+    String ACCESS_TOKEN="access:token";
+
+    // 【剩余过期时间】
+    String EXPIRES_IN="expires:in";
+    String TYPE="type";
+
+    // 【监控地址】
+    String[] MONITOR_URLS={"/actuator/**","/druid/**"};
+
+    // 【登录类型】
+    String LOGIN_TYPE="loginType";
+    // 【管理员】
+    String SYS_USER ="sysUser";
+    // 【会员】
+    String MEMBER = "member";
+
+    // 【Token快要过期的临界值】
+    Long RENEW_EXPIRE_THRESHOLD=300L;
+
 }
