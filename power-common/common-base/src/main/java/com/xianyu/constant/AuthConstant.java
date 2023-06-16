@@ -24,4 +24,7 @@ public interface AuthConstant {
 
     // 【退出地址】
     String LOGOUT_URL="/doLogout";
+
+    // 【Token过期时间】 todo 添加随机时间预防缓存雪崩
+    Long TOKEN_EXPIRE_TIME = 7200L;
 }
