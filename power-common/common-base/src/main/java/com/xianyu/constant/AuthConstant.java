@@ -18,4 +18,10 @@ public interface AuthConstant {
 
     //【放行地址】
     List<String> ALLOW_URLS= Arrays.asList("/auth-server/doLogin");
+
+    // 【登录地址】
+    String LOGIN_URL="/doLogin";
+
+    // 【退出地址】
+    String LOGOUT_URL="/doLogout";
 }
