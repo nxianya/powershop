@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianyu.mapper.LoginSysUserMapper">
+    <!--
+    resultMap:
+        定义结果集映射(只有当项目里的类里的属性与表中字段不一致)
+    -->
+    <resultMap id="BaseResultMap" type="com.xianyu.domain.LoginSysUser">
+        <!-- 【表字段(不可省略)】【表字段类型】   【类属性(不可省略)】   【类属性类型】-->
+        <id     column="user_id"  jdbcType="BIGINT"  property="userId"   javaType="Long"/>
+        <result column="username" jdbcType="VARCHAR" property="userName" javaType="String"/>
+        <result column="password" jdbcType="VARCHAR" property="password" javaType="String"/>
+        <result column="status"   jdbcType="TINYINT" property="status"   javaType="Byte"/>
+        <result column="shop_id"  jdbcType="BIGINT"  property="shopId"   javaType="Long"/>
+    </resultMap>
+
+    <!--公共Sql语句 id属性取值为自定义-->
+    <!--<sql id="Base_Colum_List">-->
+    <!--    user_id,username,`password`,`status`,shop_id-->
+    <!--</sql>-->
+
+    <select id="selectPermsByUserId" resultType="java.lang.String">
+        select distinct perms from sys_menu m inner join sys_role_menu rm on m.menu_id=rm.menu_id inner join sys_user_role ur on rm.role_id=ur.role_id
+        where ur.user_id=#{userId} and m.type=2
+    </select>
+</mapper>
