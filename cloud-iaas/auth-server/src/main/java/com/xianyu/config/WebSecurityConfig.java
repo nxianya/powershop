@@ -3,7 +3,6 @@ package com.xianyu.config;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.xianyu.model.LoginSuccess;
 import com.xianyu.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -78,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         *   指定Spring security拦截的注销的url路径
         * */
         http.logout().logoutUrl(LOGOUT_URL)
-                .logoutSuccessHandler(null);
+                .logoutSuccessHandler(logoutSuccessHandler());
         // 【请求都要通过身份验证】
         http.authorizeHttpRequests().anyRequest().authenticated();
         super.configure(http);
@@ -175,5 +176,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             writer.flush();
             writer.close();
         });
+    }
+
+    // 【采用BCrypt加密方式替换原本的加密方式】
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

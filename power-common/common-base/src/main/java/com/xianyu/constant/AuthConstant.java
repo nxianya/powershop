@@ -30,7 +30,7 @@ public interface AuthConstant {
 
     String ACCESS_TOKEN="access:token";
 
-    // 【剩余过期时间】
+    // 【凭证有效时间】
     String EXPIRES_IN="expires:in";
     String TYPE="type";
 
