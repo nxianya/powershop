@@ -51,7 +51,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests()
                 // 【过滤不拦截的资源(api文档或者被监控的文档的url以及定时任务和直接访问的任何请求等都需要经过身份验证)】
                 .antMatchers(ResourceConstant.SECURITY_ALLOW_URLS)
-                // 【无权限可访问路径(无论是否登录)】
+                // 【无权限的访问路径(无论是否登录)】
                 .permitAll()
                 .anyRequest()
                 .authenticated();

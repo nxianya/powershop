@@ -43,7 +43,7 @@ public class SwaggerAutConfiguration {
             }
         }
         return new Docket(DocumentationType.OAS_30)
-                .apiInfo(null)
+                .apiInfo(apiInfo())
                 .enable(flag)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()))
@@ -62,8 +62,7 @@ public class SwaggerAutConfiguration {
                 swaggerProperties.getVersion(),
                 swaggerProperties.getTermsOfServiceUrl(),
                 contact,
-                swaggerProperties.getLicense()
-                ,
+                swaggerProperties.getLicense(),
                 swaggerProperties.getLicenseUrl(),
                 new HashSet<>()
         );
