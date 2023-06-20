@@ -28,7 +28,10 @@ import static com.xianyu.constant.AuthConstant.*;
  * @BelongsPackage: com.xianyu.service.impl
  * @Author: xianyu
  * @CreateTime: 2023-06-16  17:18
- * @Description: TODO
+ * @Description: UserDetailsService是Security提供的用于封装认证用户信息的接口，
+ *     该接口提供的loadUserByUsername(String s)方法用于通用户名加载信息。
+ *     使用UserDetailsService进行身份认证时，自定义一个UserDetailsService接口的实现类，
+ *     通过loadUserByUsername(String s)方法封装用户详情信息并返回UserDetails对象供Security认证使用
  * @Version: 1.0
  */
 @Service
@@ -37,6 +40,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private LoginSysUserMapper userMapper;
     @Autowired
     private IdentityTypeFactory factory;
+
+    // 【通过此方法查询数据库中的权限信息并封装至loginSysUser(实现了UserDetails)中】
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 【获取请求头】

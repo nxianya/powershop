@@ -2,6 +2,7 @@ package com.xianyu.config;
 
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xianyu.model.LoginSuccess;
 import com.xianyu.model.Result;
@@ -44,9 +45,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    // 【定制用户认证管理器来实现用户认证】
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //【使用自定义的登录业务类】
+        //【使用身份详情服务】
+        /**
+         * In-Memory Authentication（内存身份认证）
+         * JDBC Authentication（JDBC身份认证）
+         * LDAP Authentication（LDAP身份认证）
+         * Authentication Provider（身份认证提供商）
+         * UserDetailService（身份详情服务）
+         */
         auth.userDetailsService(userDetailsService);
     }
 
@@ -82,7 +91,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler(logoutSuccessHandler());
         // 【请求都要通过身份验证】
         http.authorizeHttpRequests().anyRequest().authenticated();
-        super.configure(http);
     }
 
     //【登录成功后的处理方法】
@@ -92,7 +100,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             // 【产生Token】 todo 后续采用jjwt令牌完成
             String Token = UUID.randomUUID().toString();
             // 【将登陆成功的身份对象转换为json字符串】
-            String userStr = JSONUtils.toJSONString(authentication);
+            String userStr = JSON.toJSONString(authentication);
             // 【将身份信息写入Redis,过期时间2H+随机时间(预防缓存雪崩)】
             stringRedisTemplate.opsForValue().set(
                     LOGIN_TOKEN_PREFIX+Token,userStr, Duration.ofSeconds(TOKEN_EXPIRE_TIME+ RandomUtil.randomLong(1,100))
