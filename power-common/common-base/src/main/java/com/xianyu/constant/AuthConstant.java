@@ -14,7 +14,7 @@ public interface AuthConstant {
     String LOGIN_TOKEN_PREFIX="login:token:";
 
     // 【请求Token的前缀】
-    String BEARER="bearer";
+    String BEARER="bearer ";
 
     //【放行地址】
     List<String> ALLOW_URLS= Arrays.asList("/auth-server/doLogin");
