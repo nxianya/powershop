@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xianyu.mapper.ProdTagMapper">
     <resultMap id="BaseResultMap" type="com.xianyu.domain.ProdTag">
-        <!-- 【表字段(不可省略)】【表字段类型】   【类属性(不可省略)】   【类属性类型】-->
+        <!-- 【表字段(不可省略)】【表字段类型】   【类属性(不可省略)】 -->
         <id     column="id"  jdbcType="BIGINT"  property="id"   />
         <result column="title" jdbcType="VARCHAR" property="title" />
         <result column="status" jdbcType="BOOLEAN" property="status" />
