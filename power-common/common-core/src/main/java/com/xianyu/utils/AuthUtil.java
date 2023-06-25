@@ -28,5 +28,8 @@ public class AuthUtil {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return (LoginSysUser) authentication.getPrincipal();
     }
-
+    // 【获取用户的shopId】
+    public static Long getShopId(){
+        return getLoginSysUser().getShopId();
+    }
 }
