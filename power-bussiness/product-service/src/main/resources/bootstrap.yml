@@ -1,6 +1,6 @@
 spring:
   application:
-    name: manager-service
+    name: product-service
   cloud:
     nacos:
       server-addr: localhost:8848
@@ -9,7 +9,7 @@ spring:
       discovery:
         namespace: 12ba996e-1c6f-4cfe-8864-e8755acb681d
         group: A_GROUP
-        service: manager-service
+        service: product-service
       config:
         namespace: ${spring.cloud.nacos.discovery.namespace}
         group: ${spring.cloud.nacos.discovery.group}
@@ -22,7 +22,5 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-#【开启mybatis-plus的驼峰映射】
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
+  cache:
+    type: redis
