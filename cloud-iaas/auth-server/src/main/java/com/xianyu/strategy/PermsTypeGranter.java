@@ -5,4 +5,5 @@ package com.xianyu.strategy;
  */
 public interface PermsTypeGranter {
     void setAuthentication(String Type);
+    // ------
 }
