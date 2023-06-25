@@ -54,6 +54,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // 【策略模式+工厂模式】todo 未经过测试
         IdentityTypeGranter granter = factory.getGranter(loginType);
         LoginSysUser loginSysUser =granter.loginType(username);
+        // System.err.println("此时调用了该方法");
         return loginSysUser;
         // 【判断登录角色(模块完成后弃用,改用策略模式+工厂模式)】
         // switch (loginType){
