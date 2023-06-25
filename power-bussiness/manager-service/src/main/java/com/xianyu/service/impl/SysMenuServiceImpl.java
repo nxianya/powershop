@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  * @BelongsPackage: com.xianyu.service.impl
  * @Author: xianyu
  * @CreateTime: 2023-06-20  10:53
- * @Description: TODO
+ * @Description: 查询权限信息列表并存入Redis缓存
  * @Version: 1.0
  */
 @Service
