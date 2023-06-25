@@ -27,6 +27,7 @@ import java.util.List;
 @ApiModel("菜单实体类")
 @TableName(value = "sys_menu")
 public class SysMenu implements Serializable {
+    private static final long serialVersionUID = 6291678820799120977L;
     @TableId(value = "menu_id",type = IdType.AUTO)
     private Long menuId;
     @TableField(value = "parent_id")

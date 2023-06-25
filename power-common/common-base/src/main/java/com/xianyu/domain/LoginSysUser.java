@@ -21,7 +21,7 @@ import java.util.Set;
  * @BelongsPackage: com.xianyu.domain
  * @Author: xianyu
  * @CreateTime: 2023-06-16  15:12
- * @Description: TODO
+ * @Description: 角色授权身份
  * @Version: 1.0
  */
 @Data
