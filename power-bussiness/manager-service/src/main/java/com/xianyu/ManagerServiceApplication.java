@@ -3,6 +3,7 @@ package com.xianyu;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 /**
  * @BelongsProject: powershop
@@ -14,6 +15,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+// 【为所有方法开启安全验证】
+// @EnableGlobalMethodSecurity(prePostEnabled = true)
+// @EnableGlobalMethodSecurity(prePostEnabled = false)
 public class ManagerServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ManagerServiceApplication.class,args);
