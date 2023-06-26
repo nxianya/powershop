@@ -41,7 +41,9 @@ public class ProdTagReference implements Serializable {
     private Long prodId;
     // 【状态(1:正常,0:删除)】
     @TableField("`status`")
-    private Boolean status;
+    // private Boolean status;
+    private Byte status;
+
     // 【创建时间】
     @TableField("create_time")
     private Date createTime;

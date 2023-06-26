@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @BelongsProject: powershop
@@ -84,4 +85,9 @@ public class Prod implements Serializable {
     // 【版本 乐观锁】
     @TableField("version")
     private Integer version;
+    // @TableField(exist = false)
+    // private List<Long> tagList;
+    //
+    // @TableField(exist = false)
+    // private List<Sku> skuList;
 }

@@ -3,12 +3,15 @@ package com.xianyu.domain;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @BelongsProject: powershop
@@ -23,7 +26,9 @@ import java.util.Date;
 @AllArgsConstructor
 @ApiModel("角色")
 @TableName("sys_role")
-public class SysRole {
+public class SysRole implements Serializable {
+    private static final long serialVersionUID = -5367948612063537495L;
+
     @TableId("role_id")
     private Long roleId;
 
@@ -36,4 +41,7 @@ public class SysRole {
     private Long createUserId;
     @TableField("create_time")
     private Date createTime;
+
+    @TableField(exist = false)
+    private List<Long> menuIdList;
 }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @BelongsProject: powershop
@@ -43,4 +44,6 @@ public class SysUser implements Serializable {
     private Date createTime;
     @TableField("shop_id")
     private Long shopId;
+    @TableField(exist = false)
+    private List<Long> roleIdList;
 }

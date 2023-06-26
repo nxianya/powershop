@@ -26,6 +26,7 @@ import java.util.Date;
 @ApiModel("商品分组")
 @TableName("prod_tag")
 public class ProdTag implements Serializable {
+    private static final long serialVersionUID = -5978534344943186698L;
     // 【分组标签id】
     @TableId(value = "id",type = IdType.AUTO)
     private Long id;
@@ -34,7 +35,7 @@ public class ProdTag implements Serializable {
     private String title;
     // 【状态(1为正常,0为删除)】
     @TableField("`status`")
-    private Boolean status;
+    private Byte status;
     // 【列表样式(0:一列一个,1:一列两个,2:一列三个)】
     @TableField("`style`")
     private Integer style;
