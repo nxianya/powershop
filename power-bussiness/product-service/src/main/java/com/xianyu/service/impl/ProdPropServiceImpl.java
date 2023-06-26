@@ -103,4 +103,15 @@ public class ProdPropServiceImpl extends ServiceImpl<ProdPropMapper, ProdProp> i
         );
     }
 
+    @Transactional
+    @Override
+    public boolean deleteProdPropWhitValueById(Long id) {
+        boolean result = removeById(id);
+        if (result){
+            result = prodPropValueService.remove(new LambdaQueryWrapper<ProdPropValue>()
+                    .eq(ProdPropValue::getPropId, id));
+        }
+        return result;
+    }
+
 }

@@ -9,6 +9,7 @@ import com.xianyu.service.ProdPropValueService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,5 +55,11 @@ public class ProdPropController {
     @ApiOperation("加载特殊属性对应的属性值的集合")
     public Result<List<ProdPropValue>> loadProdPropValuesByProdId(@PathVariable("prodId") Long prodPropId){
         return Result.success(prodPropValueService.loadProdPropValuesByProdId(prodPropId));
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation("删除属性")
+    public Result<Integer> deleteProdPropWhitValueById(@PathVariable Long id){
+        return prodPropService.deleteProdPropWhitValueById(id)?Result.success("删除成功"): Result.fail(HttpStatus.INTERNAL_SERVER_ERROR.value(), "删除失败");
     }
 }
