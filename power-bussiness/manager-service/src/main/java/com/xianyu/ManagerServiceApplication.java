@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @BelongsProject: powershop
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableTransactionManagement
 // 【为所有方法开启安全验证】
 // @EnableGlobalMethodSecurity(prePostEnabled = true)
 // @EnableGlobalMethodSecurity(prePostEnabled = false)

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SysMenuService extends IService<SysMenu> {
     List<SysMenu> getSysMenusByUserId(Long userId);
+
+    SysMenu selectSysMenu(Long id);
 }

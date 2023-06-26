@@ -52,6 +52,11 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         }
     }
 
+    @Override
+    public SysMenu selectSysMenu(Long id) {
+        return getById(id);
+    }
+
     // 【构建菜单(主菜单、子菜单)关系--指定层次结构】
     // private List<SysMenu> buildTreeMenu(List<SysMenu> sysMenus, long pid) {
     //     // 【获取菜单的根元素(pid=0)】
